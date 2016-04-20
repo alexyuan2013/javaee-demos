@@ -24,17 +24,29 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RequestMapping("/cont")
 public class RestController {
 
+	/**
+     * Size of a byte buffer to read/write file
+     */
+    private static final int BUFFER_SIZE = 4096;
+	
+	/**
+	 * 已上传的文件对象
+	 */
 	UploadedFile ufile;
 
 	public RestController() {
 		System.out.println("init RestController");
 		ufile = new UploadedFile();
 	}
-
+	/**
+	 * 获取刚刚上传的图片
+	 * @param response
+	 * @param value
+	 */
 	@RequestMapping(value = "/get/{value}", method = RequestMethod.GET)
 	public void get( HttpServletResponse response, @PathVariable String value) {
 		try {
-			
+			//ufile在upload方法中已经赋值，即为最近上传的文件的相关属性
 			response.setContentType(ufile.type);
 			response.setContentLength(ufile.length);
 			FileCopyUtils.copy(ufile.bytes, response.getOutputStream());
@@ -44,14 +56,15 @@ public class RestController {
 			e.printStackTrace();
 		}
 	}
-	
 	/**
-     * Size of a byte buffer to read/write file
-     */
-    private static final int BUFFER_SIZE = 4096;
-	
+	 * 下载文件接口
+	 * @param request
+	 * @param response
+	 * @param value 注意RequestMapping中的value注解形式，其保证了value可以带文件后缀名
+	 */
 	@RequestMapping(value = "/file/{value:.+}", method = RequestMethod.GET)
-	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable("value") String value) {
+	public void getFile(HttpServletRequest request, 
+			HttpServletResponse response, @PathVariable("value") String value) {
 		try {
 			// get absolute path of the application
 	        ServletContext context = request.getServletContext();
@@ -74,16 +87,16 @@ public class RestController {
 	        // set content attributes for the response
 	        response.setContentType(mimeType);
 	        response.setContentLength((int) downloadFile.length());
+	        //此处采用get方法中的FileCopyUtiles类将图片传到客户端
+	        FileCopyUtils.copy(IOUtils.toByteArray(inputStream), response.getOutputStream());
 	        
-	        /*
+	        /* 注释部分为另一个文件下载参考示例原来的代码
 	        // set headers for the response
 	        String headerKey = "Content-Disposition";
 	        String headerValue = String.format("attachment; filename=\"%s\"",
 	                downloadFile.getName());
 	        response.setHeader(headerKey, headerValue);
-	        */
-	        FileCopyUtils.copy(IOUtils.toByteArray(inputStream), response.getOutputStream());
-	        
+	        */	             
 	        /*
 	        // get output stream of the response
 	        OutputStream outStream = response.getOutputStream();
@@ -107,6 +120,12 @@ public class RestController {
 		}
 	}
 
+	/**
+	 * 文件上传接口，采用MultipartHttpServletRequest实现
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public @ResponseBody String upload(MultipartHttpServletRequest request, HttpServletResponse response) {
 
@@ -117,6 +136,7 @@ public class RestController {
 
 		MultipartFile mpf = request.getFile(itr.next());
 		System.out.println(mpf.getOriginalFilename() + " uploaded!");
+		//request.getParameterMap()方法用来获得传入的其他参数
 		//System.out.println(request.getParameterMap().get("fileName")[0]);
 
 		try {
