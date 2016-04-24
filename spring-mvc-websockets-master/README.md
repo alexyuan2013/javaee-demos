@@ -4,11 +4,11 @@ spring-mvc-websockets
 Code for http://kimrudolph.de/blog/spring-4-websockets-tutorial/
 
 
-- ## 实现功能
+* 实现功能
 
 服务端生成随机数，在客户端以图标的形式展示，类似于实现股票实时更新的功能
 
-- ## 教程翻译
+* 教程翻译
 
 本教程的目的是实现一个向在线订阅者发送随机数的服务，主要集成了一下功能：
 
@@ -18,7 +18,7 @@ Code for http://kimrudolph.de/blog/spring-4-websockets-tutorial/
 
 ![最终实现效果](http://kimrudolph.de/images/websockets_highchart.jpg)
 
-1. web应用配置
+* web应用配置
 
 首先基于spring创建一个web应用，重点是开启setAsyncSupported(true)，
 使web容器（tomcat等）可以执行异步操作，代码如下：
@@ -146,7 +146,7 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
 }
 ```
-2. 随机数生成器
+* 随机数生成器
 
 通过`@scheduled`注解配置`sendDataUpdates()`方法，使其每隔一秒生成一个随机数并广播给订阅者，
 订阅者所订阅的主题为`/data`，代码如下：
@@ -187,7 +187,7 @@ public class RandomDataGenerator implements
     }
 }
 ```
-3. Javascript代码
+* Javascript代码
 
 客户端的javascript代码主要包含两部分，首先是highchart的代码：
 
@@ -249,7 +249,7 @@ client.connect('user', 'password', function(frame) {
 
 });
 ```
-4. html文件
+* html文件
 
 ```html
 <!DOCTYPE html>
