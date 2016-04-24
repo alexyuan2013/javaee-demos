@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.slf4j.*;
 import org.springframework.messaging.handler.annotation.*;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,11 @@ public class ChatController {
   public OutputMessage sendMessage(Message message) {
     logger.info("Message sent");
     return new OutputMessage(message, new Date());
+  }
+  
+  @Scheduled(fixedDelay = 1000)
+  public void heartBeat(){
+	  
   }
   /*
   @MessageMapping("/chat2")

@@ -39,12 +39,12 @@ $('#randomDataChart').highcharts({
     } ]
 });
 
-var socket = new SockJS('/spring-mvc-websockets/random');
+var socket = new SockJS('/spring-mvc-websockets/chat');
 var client = Stomp.over(socket);
 
 client.connect('user', 'password', function(frame) {
 
-  client.subscribe("/data", function(message) {
+  client.subscribe("/topic/message", function(message) {
     var point = [ (new Date()).getTime(), parseInt(message.body) ];
     var shift = randomData.data.length > 60;
     randomData.addPoint(point, true, shift);
