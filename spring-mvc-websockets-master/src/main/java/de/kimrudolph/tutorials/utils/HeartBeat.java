@@ -24,10 +24,10 @@ public class HeartBeat implements
     public void onApplicationEvent(final BrokerAvailabilityEvent event) {
     }
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 5000)
     public void sendDataUpdates() {
 
-    	//System.out.println("heart beat");
+    	System.out.println("heart beat");
     	Date now = new Date();
     	String timeStamp = ""  + now.getTime();
     	//JSONObject obj = new JSONObject();
