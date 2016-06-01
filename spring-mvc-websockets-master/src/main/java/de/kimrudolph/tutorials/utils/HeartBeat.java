@@ -24,7 +24,7 @@ public class HeartBeat implements
     public void onApplicationEvent(final BrokerAvailabilityEvent event) {
     }
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 10000)
     public void sendDataUpdates() {
 
     	System.out.println("heart beat");
