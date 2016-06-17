@@ -40,18 +40,18 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>4.0.3.RELEASE</version>
 		</dependency>
 		<!-- Spring WebSocket dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-websocket</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>4.0.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-messaging</artifactId>
-			<version>4.0.0.RELEASE</version>
+			<version>4.0.3.RELEASE</version>
 		</dependency>
 		<!-- Spring security dependencies -->
 		<dependency>
