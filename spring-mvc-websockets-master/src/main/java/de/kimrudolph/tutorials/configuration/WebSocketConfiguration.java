@@ -37,7 +37,8 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
 	@Override
 	public boolean configureMessageConverters(List<MessageConverter> arg0) {
-		// TODO Auto-generated method stub
+		// must return "true", from the stackoverflow
+		// (http://stackoverflow.com/questions/25738683/spring-4-autowired-failed)
 		return true;
 	}
 
