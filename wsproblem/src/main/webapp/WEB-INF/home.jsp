@@ -10,9 +10,8 @@
 	<a href="#" id="send">Request user specific msg</a><br/><br/>
 	Received Message To Me Only: <span id="received"></span><br/><br/>
 	
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<!--  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+	<script src="resources/jquery-1.11.0.min.js"></script>
+	<script src="resources/sockjs.js"></script>
 	<script src="resources/stomp.js"></script>
 	<script>
 		$(document).ready(function() {
