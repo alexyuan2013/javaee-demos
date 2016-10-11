@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>WebSocket heart beat</title>
+    <script type="text/javascript" src="resources/jquery.js" /></script>
+	<script type="text/javascript" src="resources/sockjs.js" /></script>
+	<script type="text/javascript" src="resources/stomp.js" /></script>
+	<script type="text/javascript">
+	  $(document).ready(function (){
+		  var socket = new SockJS('/spring-mvc-websockets/chat');
+		  var client = Stomp.over(socket);
+		  client.connect({company: "1"}, function(frame){
+			 client.subscribe('/topic/message', function(message){
+				 var msg = JSON.parse(message.body);
+				 $('#received').append("<p>" + msg.v + " " + msg.t + " " + msg.d + "</p>");
+			 }); 
+		  });
+	  })
+	</script>
+  </head>
+  <body>
+    Received message: <span id="received"></span><br/><br/>
+  </body>
+  
+</html>
