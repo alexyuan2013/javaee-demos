@@ -145,7 +145,7 @@ public class RestController {
 			ufile.bytes = mpf.getBytes();
 			ufile.type = mpf.getContentType();
 			ufile.name = mpf.getOriginalFilename();
-			String destination =  request.getSession().getServletContext().getRealPath("/") + ufile.name;
+			String destination =  request.getSession().getServletContext().getRealPath("/") + "upload/" +ufile.name;
 			java.io.File file1 = new java.io.File(destination);
 			mpf.transferTo(file1);
 
