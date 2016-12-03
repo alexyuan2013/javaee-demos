@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<!-- 通过bean元素声明需要Spring创建的实例。该实例的类型通过class属性指定，并通过id属性为该实例指定一个名称，以便在程序中使用 -->
+	<bean id="helloSpring" class="cn.jbit.biz.HelloSpring">
+		<!-- property元素用来为实例的属性赋值,此处实际是调用setWho()方法实现赋值操作 -->
+		<property name="who">
+			<!-- 此处将字符串"Spring"赋值给who属性 -->
+			<value>Spring</value>
+		</property>
+	</bean>
+
+	<bean id="zhangGaSay" class="cn.jbit.biz.GreetingSpring">
+		<!-- property元素用来指定需要容器注入的属性,person属性需要容器注入, Greeting类必须拥有setPerson()方法 -->
+		<property name="person">
+			<!--为person属性注入值 -->
+			<value>张嘎</value>
+		</property>
+		<!-- words属性需要容器注入, Greeting类必须拥有setWords()方法 -->
+		<property name="words">
+			<!-- 为words属性注入值 -->
+			<value>三天不打小鬼子,手都痒痒!</value>
+		</property>
+	</bean>
+
+
+	<!-- 定义彩色墨盒bean，该bean的id是colorInk，class指定该bean实例的实现类 -->
+	<bean id="colorInk" class="cn.jbit.printer.ColorInk" />
+	<!-- 定义灰色墨盒bean，该bean的id是greyInk，class指定该bean实例的实现类 -->
+	<bean id="greyInk" class="cn.jbit.printer.GreyInk" />
+	<!-- 定义A4纸张bean，该bean的id是a4Paper，class指定该bean实例的实现类 -->
+	<bean id="a4Paper" class="cn.jbit.printer.TextPaper">
+		<!-- property元素用来指定需要容器注入的属性，charPerLine需要容器注入， TextPaper类必须拥有setCharPerLine()方法。 
+			注入每行字符数 -->
+		<property name="charPerLine" value="10" />
+		<!-- property元素用来指定需要容器注入的属性，linePerPage需要容器注入，TextPaper类必须拥有setLinePerPage()方法。 
+			注入每页行数 -->
+		<property name="linePerPage" value="8" />
+	</bean>
+	<!-- 定义B5纸张bean，该bean的id是b5Paper，class指定该bean实例的实现类 -->
+	<bean id="b5Paper" class="cn.jbit.printer.TextPaper">
+		<!-- property元素用来指定需要容器注入的属性，charPerLine需要容器注入， TextPaper类必须拥有setCharPerLine()方法。注入每行字符数 -->
+		<property name="charPerLine" value="6" />
+		<!-- property元素用来指定需要容器注入的属性，linePerPage需要容器注入， TextPaper类必须拥有setLinePerPage()方法。注入每页行数 -->
+		<property name="linePerPage" value="5" />
+	</bean>
+
+	<!-- 组装打印机。定义打印机bean，该bean的id是printer， class指定该bean实例的实现类 -->
+	<bean id="printer" class="cn.jbit.printer.Printer">
+		<!-- 通过ref属性注入已经定义好的bean -->
+		<!-- 注入彩色墨盒 -->
+		<property name="ink" ref="colorInk"></property>
+		<!-- 注入A4打印纸张 -->
+		<property name="paper" ref="b5Paper"></property>
+	</bean>
+
+
+	<bean id="userDao" class="cn.jbit.dao.imple.UserDaoImple" />
+	<bean id="biz" class="cn.jbit.biz.imple.UserBizImple">
+		<property name="dao" ref="userDao"></property>
+	</bean>
+
+	<!-- 定义 了前置增强和后置增强组件 -->
+	<bean id="loggerBefore" class="cn.jbit.aop.LoggerBefore"></bean>
+	<bean id="loggerAfterReturning" class="cn.jbit.aop.LoggerAfterReturning"></bean>
+
+	<aop:config>
+		<!-- 定义切入点 -->
+		<aop:pointcut id="pointcut"
+			expression="execution(public void addNewUser(cn.jbit.entity.User))" />
+		<!-- 将增强处理和切入点结合在一起，在 切入点处插入增强处理，完成"织入" -->
+		<aop:advisor pointcut-ref="pointcut" advice-ref="loggerBefore" />
+		<aop:advisor pointcut-ref="pointcut" advice-ref="loggerAfterReturning" />
+	</aop:config>
+</beans>

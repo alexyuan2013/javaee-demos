@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ssm.dao.CaoZuoRiZhiMapper">
+	<resultMap id="BaseResultMap" type="cn.ssm.entity.CaoZuoRiZhi">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="dengLuId" property="dengLuId" jdbcType="INTEGER" />
+		<result column="caoZuoLuJing" property="caoZuoLuJing" jdbcType="VARCHAR" />
+		<result column="caoZuoShiJian" property="caoZuoShiJian"
+			jdbcType="TIMESTAMP" />
+		<result column="caoZuoYiJiCaiDan" property="caoZuoYiJiCaiDan"
+			jdbcType="VARCHAR" />
+		<result column="caoZuoErJiCaiDan" property="caoZuoErJiCaiDan"
+			jdbcType="VARCHAR" />
+		<result column="caoZuoSanJiCaiDan" property="caoZuoSanJiCaiDan"
+			jdbcType="VARCHAR" />
+		<result column="caoZuoRenIP" property="caoZuoRenIP" jdbcType="VARCHAR" />
+		<result column="caoZuoYiChangMing" property="caoZuoYiChangMing"
+			jdbcType="VARCHAR" />
+		<result column="caoZuoCanShu" property="caoZuoCanShu" jdbcType="LONGVARCHAR" />
+		<result column="caoZuoFangFa" property="caoZuoFangFa" jdbcType="VARCHAR" />
+		<result column="caoZuoMiaoShu" property="caoZuoMiaoShu"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, dengLuId, caoZuoLuJing, caoZuoShiJian,
+		caoZuoYiJiCaiDan,
+		caoZuoErJiCaiDan, caoZuoSanJiCaiDan,
+		caoZuoRenIP,
+		caoZuoYiChangMing,caoZuoCanShu
+	</sql>
+
+
+	<select id="selectAllBySelective" parameterType="cn.ssm.entity.CaoZuoRiZhi"
+		resultType="cn.ssm.entity.CaoZuoRiZhi">
+		select * from caozuorizhi
+		<where>
+			<if test="id != null">
+				and id = #{id,jdbcType=BIGINT}
+			</if>
+			<if test="dengLuId != null">
+				and dengLuId = #{dengLuId,jdbcType=INTEGER}
+			</if>
+			<if test="caoZuoLuJing != null">
+				and caoZuoLuJing = #{caoZuoLuJing,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoShiJian != null">
+				and caoZuoShiJian = #{caoZuoShiJian,jdbcType=TIMESTAMP}
+			</if>
+			<if test="caoZuoYiJiCaiDan != null">
+				and caoZuoYiJiCaiDan =
+				#{caoZuoYiJiCaiDan,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoErJiCaiDan != null">
+				and caoZuoErJiCaiDan =
+				#{caoZuoErJiCaiDan,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoSanJiCaiDan != null">
+				and caoZuoSanJiCaiDan =
+				#{caoZuoSanJiCaiDan,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoRenIP != null">
+				and caoZuoRenIP = #{caoZuoRenIP,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoYiChangMing != null">
+				and caoZuoYiChangMing =
+				#{caoZuoYiChangMing,jdbcType=VARCHAR}
+			</if>
+			<if test="caoZuoCanShu != null">
+				and caoZuoCanShu = #{caoZuoCanShu,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSelective" parameterType="cn.ssm.entity.CaoZuoRiZhi">
+		insert into caozuorizhi
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="dengLuId != null">
+				dengLuId,
+			</if>
+			<if test="caoZuoLuJing != null">
+				caoZuoLuJing,
+			</if>
+			<if test="caoZuoShiJian != null">
+				caoZuoShiJian,
+			</if>
+			<if test="caoZuoYiJiCaiDan != null">
+				caoZuoYiJiCaiDan,
+			</if>
+			<if test="caoZuoErJiCaiDan != null">
+				caoZuoErJiCaiDan,
+			</if>
+			<if test="caoZuoSanJiCaiDan != null">
+				caoZuoSanJiCaiDan,
+			</if>
+			<if test="caoZuoRenIP != null">
+				caoZuoRenIP,
+			</if>
+			<if test="caoZuoYiChangMing != null">
+				caoZuoYiChangMing,
+			</if>
+			<if test="caoZuoCanShu != null">
+				caoZuoCanShu,
+			</if>
+			<if test="caoZuoFangFa != null">
+				caoZuoFangFa,
+			</if>
+			<if test="caoZuoMiaoShu != null">
+				caoZuoMiaoShu,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="dengLuId != null">
+				#{dengLuId,jdbcType=INTEGER},
+			</if>
+			<if test="caoZuoLuJing != null">
+				#{caoZuoLuJing,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoShiJian != null">
+				#{caoZuoShiJian,jdbcType=TIMESTAMP},
+			</if>
+			<if test="caoZuoYiJiCaiDan != null">
+				#{caoZuoYiJiCaiDan,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoErJiCaiDan != null">
+				#{caoZuoErJiCaiDan,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoSanJiCaiDan != null">
+				#{caoZuoSanJiCaiDan,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoRenIP != null">
+				#{caoZuoRenIP,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoYiChangMing != null">
+				#{caoZuoYiChangMing,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoCanShu != null">
+				#{caoZuoCanShu,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="caoZuoFangFa != null">
+				#{caoZuoFangFa,jdbcType=VARCHAR},
+			</if>
+			<if test="caoZuoMiaoShu != null">
+				#{caoZuoMiaoShu,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+
+
+</mapper>
