@@ -161,7 +161,7 @@ $(function(){
 						$("#pagefenye a").click(function() {
 							var href = $(this).attr("href");
 							var formStr = $("#form").serialize();
-							window.location.href = href + "&" + formStr;
+							window.location.href = href; //+ "&" + formStr;
 							return false;
 						});
 					});
