@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+/* CSS Document */
+body {
+	width: 100%;
+	margin-top: 0px;
+	/* text-align:center; */
+}
+
+table {
+	margin-left: 20px;
+}
+
+.one {
+	width: 850px;
+	font-size: 14px;
+}
+
+.one .top {
+	background-colorzz: #FFF;
+	height: 33px;
+	line-height: 33px;
+	padding-left: 28px;
+	color: #168750;
+	font-weight: bold;
+	margin-top: 10px;
+	text-align: left;
+	background: url(../img/a12.jpg) no-repeat;
+}
+
+.iocn {
+	display: block;
+	width: 14px;
+	height: 14px;
+	background-image: url(../img/+.jpg);
+	background-repeat: no-repeat;
+	float: left;
+	margin: 10px 0px 0px 3px;
+	padding-right: 10px;
+}
+
+.one  span.jian {
+	background-image: url(../img/-.jpg);
+}
+
+.one  span.jia {
+	background-image: url(../img/+.jpg);
+}
+
+.one  div.bgreen {
+	background-image: url(../img/bg.jpg);
+}
+
+.side {
+	display: none;
+	padding: 5px;
+	width: 850px;
+	border: 1px solid #D9EFED;
+}
+
+#fq {
+	margin-top: 20px;
+	height: 1200px;
+}
+
+.red {
+	color: red;
+	float: left;
+	width: 160px;
+	margin-top: -17px;
+	margin-left: 255px;
+	font-size: 12px;
+}
+
+.text_red {
+	color: #F00;
+}
+
+.anniu {
+	margin: auto;
+}

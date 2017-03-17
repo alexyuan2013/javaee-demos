@@ -1,0 +1,84 @@
+body {
+	margin:0px;
+	padding:0px;
+}
+.tb{
+	width:100%;
+	height:20px;
+	}
+
+td {
+	border:solid 1px;
+	border-color:#CCC;
+}
+.chuangkou {
+	width:36px;
+	height:25px;
+	float:left;
+}
+
+.demo-rtl .portal-column-left {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.demo-rtl .portal-column-right {
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+.red {
+	color: #ff0000;
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+.inputs {
+	border: 1px solid #333;
+	width: 173px;
+	float: left;
+}
+
+table th {
+	white-space: nowrap;
+}
+
+table td {
+	white-space: nowrap;
+}
+
+table {
+	empty-cells: show;
+	border-collapse: collapse;
+	margin: 0 auto;
+	font-size: 12px;
+	width:100%;
+	border-spacing:0;
+}
+
+h1, h2, h3 {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+table.tab_css_1 {
+	border: 1px solid #cad9ea;
+	color: #666;
+}
+
+table.tab_css_1 th {
+	background-image: url("th_bg1.gif");
+	background-repeat: repeat-x;
+	height: 30px;
+}
+
+table.tab_css_1 td, table.tab_css_1 th {
+	border: 1px solid #cad9ea;
+	padding: 0 1em 0;
+}
+
+table.tab_css_1 tr.tr_css {
+	background-color: #f5fafe;
+	height: 30px;
+}

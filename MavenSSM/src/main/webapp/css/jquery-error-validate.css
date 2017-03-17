@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+#form .invalid{
+	color:Red; 
+	font-size:13px; 
+}
