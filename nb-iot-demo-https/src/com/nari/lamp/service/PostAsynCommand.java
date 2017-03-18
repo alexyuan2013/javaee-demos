@@ -36,7 +36,7 @@ public class PostAsynCommand {
         Map<String, Object> paramPostAsynCmd = new HashMap<String, Object>();
         paramPostAsynCmd.put("command", paramCommand);
         paramPostAsynCmd.put("callbackUrl", callbackUrl);
-        paramPostAsynCmd.put("expireTime",0);//   please replace the expireTime, when you use the demo.
+        paramPostAsynCmd.put("expireTime",150);//   please replace the expireTime, when you use the demo.
         
         String jsonRequest = JsonUtil.jsonObj2Sting(paramPostAsynCmd);
                 
@@ -53,6 +53,6 @@ public class PostAsynCommand {
 
 	public static void main(String args[]) throws Exception {
 
-		post("aA8AaAGAAAACBAACIBICABAAAG9+Fg==", "957bcedb-4991-4dd9-a016-3bfe049471e0");
+		post("aAwAaAO1AAACBAACIBIJADdEFg==", "957bcedb-4991-4dd9-a016-3bfe049471e0");
     }
 }

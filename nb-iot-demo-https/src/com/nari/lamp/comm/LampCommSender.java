@@ -102,6 +102,24 @@ public class LampCommSender {
 		return obj.toBase64String();
 	}
 	/**
+	 * 查询单灯内部参数
+	 * @return
+	 */
+	public static String queryLampInternalParams(){
+		byte[] msgBody = null;
+		Header header = new Header();
+		//设置消息id：0xB503
+		byte[] msgId = new byte[2];
+		ByteBuffer bf = ByteBuffer.allocate(2);//长度为2byte
+		bf.putShort((short)0xB503);
+		//WORD——小端模式，先传低位，再传高位
+		msgId[0] = bf.array()[1];
+		msgId[1] = bf.array()[0];
+		header.setMsgId(msgId);
+		LampCommObject obj = new LampCommObject(header, msgBody);
+		return obj.toBase64String();
+	}
+	/**
 	 * 设置经纬度开关时间
 	 * @return
 	 */
@@ -262,6 +280,9 @@ public class LampCommSender {
 		return obj.toBase64String();
 	}
 	
+	public static String setLampInternalParams(){
+		return "";
+	}
 	
 	public static void main(String[] args) {
 		LampCommObject bb = new LampCommObject("aCMAaAEAAAACBAACIBINADIAAAEyMSAgIDEwMTIxMEcgATVlVnciNYUW");
@@ -279,9 +300,10 @@ public class LampCommSender {
 		       b4 = 0x64,
 		       b5 = 0x64;
 		System.out.println(setBrightness(used, 18, 20, b1, 20, 10, b2, 22, 10, b3, 1, 10, b4, 4, 10, b5));
-		byte mode = 0x01;
+		byte mode = 0x00;
 		System.out.println(setControlMode(mode));
 		System.out.println(setLonLatSwitchTime(1,1,30));
+		System.out.println(queryLampInternalParams());
 		
 	}
 

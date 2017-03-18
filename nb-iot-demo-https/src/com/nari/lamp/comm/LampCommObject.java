@@ -101,7 +101,7 @@ public class LampCommObject {
 				data = this.getBody()[i-12]&0xff;
 			}
 			ax ^= data;
-			System.out.println(ax);
+			//System.out.println(ax);
 			for(int j=0; j<8; j++){
 				lsb = ax&0x0001;
 				ax = ax>>1;
