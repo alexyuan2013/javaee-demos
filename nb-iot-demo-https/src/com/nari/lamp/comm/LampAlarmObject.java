@@ -33,7 +33,8 @@ public class LampAlarmObject {
 		}
 	}
 	
-	public void toDatabase(){
+	public void toDatabase(String deviceId){
+		System.out.println(deviceId);
 		System.out.println("LampAlarm对象将写入数据库");
 	}
 }

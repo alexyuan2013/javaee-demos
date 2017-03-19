@@ -25,7 +25,7 @@ public class LampCommReceiver {
 	 * 接受消息并应答
 	 * @param src
 	 */
-	public String receiver(String src){
+	public String receiver(String src, String deviceId){
 		String result="";
 		LampCommObject lco = new LampCommObject(src);
 		int msgID = BodyEncodeDecode.byte2Integer(lco.getHeader().getMsgId());
@@ -42,12 +42,12 @@ public class LampCommReceiver {
 			break;
 		case ALARM_MSG_ID:
 			LampAlarmObject alarm = new LampAlarmObject(lco.getBody());
-			alarm.toDatabase();
+			alarm.toDatabase(deviceId);
 			result = replyAlarm(lco);
 			break;
 		case QUERY_STATE_ID:
 			LampStateObject state = new LampStateObject(lco.getBody());
-			state.toDatabase();
+			state.toDatabase(deviceId);
 			result = replyCommon(lco);
 			break;
 		case QUERY_INTERNAL_PARAMS:
@@ -97,7 +97,8 @@ public class LampCommReceiver {
 	
 	public static void main(String[] args) {
 		LampCommReceiver receiver = new LampCommReceiver();
-		System.out.println(receiver.receiver("aD0AaAg1AAACBAACIBIUAAQAAQogAAAVBzAQIEaSBQAAMQAAAAAAAAIBZOIAAAAAZAAAAAACZOIAAAAAMgAAAAB7phY="));
+		System.out.println(receiver.receiver("aD0AaAg1AAACBAACIBIUAAQAAQogAAAVBzAQIEaSBQAAMQAAAAAAAAIBZOIAAAAAZAAAAAACZOIAAAAAMgAAAAB7phY=",
+				"957bcedb-4991-4dd9-a016-3bfe049471e0"));
 	}
 
 }

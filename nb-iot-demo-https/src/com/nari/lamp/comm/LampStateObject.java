@@ -130,7 +130,8 @@ public class LampStateObject {
 		
 	}
 	
-	public void toDatabase(){
+	public void toDatabase(String deviceId){
+		System.out.println(deviceId);
 		System.out.println("LampStateObject对象将写入数据库");
 	}
 }
