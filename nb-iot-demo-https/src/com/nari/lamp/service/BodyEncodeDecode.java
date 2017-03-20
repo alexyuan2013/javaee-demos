@@ -33,7 +33,7 @@ public class BodyEncodeDecode {
 	}
 	
 	public static void main(String[] arsg){
-		LampCommObject bb = new LampCommObject("aD0AaAg1AAACBAACIBLzAAQAAAogAAAVBzEAGDLXCAAA0wIAAAAAAAIBZN4AAAAAZAAAAAACZN4AAAAAUAAAAABAJRY=");
+		LampCommObject bb = new LampCommObject("aAwAaAi1AAACBAACIBIEANYPFg==");
 		System.out.println(bb.toBase64String());
 		Date now = new Date();
 		System.out.println(now.getYear()-100);

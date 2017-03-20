@@ -56,7 +56,7 @@ public class Header{
 		this.msgAttr[1] = word.array()[0];
 		//--设置deviceId
 		this.deviceId[0] = BCD.DecimalToBCD(2)[0];
-		this.deviceId[1] = 0x04;
+		this.deviceId[1] = 0x05;
 		this.deviceId[2] = 0x00;
 		this.deviceId[3] = 0x02;
 		this.deviceId[4] = 0x20;

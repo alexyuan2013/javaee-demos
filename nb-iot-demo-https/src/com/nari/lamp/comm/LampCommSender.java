@@ -285,7 +285,7 @@ public class LampCommSender {
 	}
 	
 	public static void main(String[] args) {
-		LampCommObject bb = new LampCommObject("aCMAaAEAAAACBAACIBINADIAAAEyMSAgIDEwMTIxMEcgATVlVnciNYUW");
+		LampCommObject bb = new LampCommObject("aCMAaAEAAAACBQACIBISADIAAAEyMSAgIDEwMTIxMEcgATVlVnciYGQW");
 		byte[] msgNo = bb.getHeader().getMsgNum();
 		byte result = 0x00;
 		System.out.println(replyLogin(msgNo, result));
